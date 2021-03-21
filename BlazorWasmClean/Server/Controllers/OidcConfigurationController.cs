@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace BlazorWasmClean.Server.Controllers
 {
+	[ApiExplorerSettings(IgnoreApi = true)]
 	public class OidcConfigurationController : Controller
 	{
-		private readonly ILogger<OidcConfigurationController> _logger;
+		private readonly ILogger<OidcConfigurationController> logger;
 
-		public OidcConfigurationController(IClientRequestParametersProvider clientRequestParametersProvider, ILogger<OidcConfigurationController> logger)
+		public OidcConfigurationController(IClientRequestParametersProvider clientRequestParametersProvider, ILogger<OidcConfigurationController> _logger)
 		{
 			ClientRequestParametersProvider = clientRequestParametersProvider;
-			_logger = logger;
+			logger = _logger;
 		}
 
 		public IClientRequestParametersProvider ClientRequestParametersProvider { get; }

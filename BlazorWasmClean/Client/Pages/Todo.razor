@@ -1,8 +1,8 @@
 ﻿@page "/todo"
-@using BlazorWasmClean.Shared
-@inject BlazorWasmClean.Shared.State.StateContainer StateContainer
+@using BlazorWasmClean.Application.TodoLists.Queries.GetTodos
+@inject StateContainer StateContainer
 
-<h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
+<h3>Todo (@todos.Count(todo => !todo.Done))</h3>
 
 <b>@StateContainer.Property</b>
 
@@ -10,7 +10,7 @@
 	@foreach (var todo in todos)
 	{
 		<li>
-			<input type="checkbox" @bind="todo.IsDone" />
+			<input type="checkbox" @bind="todo.Done" />
 			<input @bind="todo.Title" />
 		</li>
 	}
@@ -20,14 +20,14 @@
 <button @onclick="AddTodo" class="btn btn-primary">Add todo</button>
 
 @code {
-	private IList<TodoItem> todos = new List<TodoItem>();
+	private IList<TodoItemDto> todos = new List<TodoItemDto>();
 	private string newTodo;
 
 	private void AddTodo()
 	{
 		if (!string.IsNullOrWhiteSpace(newTodo))
 		{
-			todos.Add(new TodoItem { Title = newTodo });
+			todos.Add(new TodoItemDto { Title = newTodo });
 			newTodo = string.Empty;
 		}
 	}

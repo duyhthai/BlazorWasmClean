@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\BlazorWasmClean.Shared.csproj" />
+    <ProjectReference Include="..\Application\BlazorWasmClean.Application.csproj" />
   </ItemGroup>
 
 </Project>
