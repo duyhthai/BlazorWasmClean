@@ -1,11 +1,9 @@
-using System.Linq;
 using BlazorWasmClean.Server.Data;
 using BlazorWasmClean.Server.Models;
+using BlazorWasmClean.Shared.State;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +41,8 @@ namespace BlazorWasmClean.Server
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+
+			services.AddScoped<StateContainer>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
