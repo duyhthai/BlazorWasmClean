@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmClean.Server", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmClean.Client", "BlazorWasmClean\Client\BlazorWasmClean.Client.csproj", "{34CF9CBF-CADC-4FED-AA3E-D2BEC64AF1F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmClean.Shared", "BlazorWasmClean\Shared\BlazorWasmClean.Shared.csproj", "{9B409D5B-EE3F-4CF4-BBDD-A46619ED15D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasmClean.Infrastructure", "BlazorWasmClean\Infrastructure\BlazorWasmClean.Infrastructure.csproj", "{483864D6-8D2F-4618-AA9D-8DFFFA2039A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasmClean.Application", "BlazorWasmClean\Application\BlazorWasmClean.Application.csproj", "{21FD79EC-3414-464B-AC4F-F4443481D370}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWasmClean.Domain", "BlazorWasmClean\Domain\BlazorWasmClean.Domain.csproj", "{9572EB90-1350-4049-B84A-F18C43830C0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E00F57B9-69CA-4B17-AB71-CA2DDEB02662}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,13 +29,26 @@ Global
 		{34CF9CBF-CADC-4FED-AA3E-D2BEC64AF1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34CF9CBF-CADC-4FED-AA3E-D2BEC64AF1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34CF9CBF-CADC-4FED-AA3E-D2BEC64AF1F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B409D5B-EE3F-4CF4-BBDD-A46619ED15D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B409D5B-EE3F-4CF4-BBDD-A46619ED15D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B409D5B-EE3F-4CF4-BBDD-A46619ED15D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B409D5B-EE3F-4CF4-BBDD-A46619ED15D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483864D6-8D2F-4618-AA9D-8DFFFA2039A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483864D6-8D2F-4618-AA9D-8DFFFA2039A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483864D6-8D2F-4618-AA9D-8DFFFA2039A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483864D6-8D2F-4618-AA9D-8DFFFA2039A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21FD79EC-3414-464B-AC4F-F4443481D370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21FD79EC-3414-464B-AC4F-F4443481D370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21FD79EC-3414-464B-AC4F-F4443481D370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21FD79EC-3414-464B-AC4F-F4443481D370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9572EB90-1350-4049-B84A-F18C43830C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9572EB90-1350-4049-B84A-F18C43830C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9572EB90-1350-4049-B84A-F18C43830C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9572EB90-1350-4049-B84A-F18C43830C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{483864D6-8D2F-4618-AA9D-8DFFFA2039A6} = {E00F57B9-69CA-4B17-AB71-CA2DDEB02662}
+		{21FD79EC-3414-464B-AC4F-F4443481D370} = {E00F57B9-69CA-4B17-AB71-CA2DDEB02662}
+		{9572EB90-1350-4049-B84A-F18C43830C0D} = {E00F57B9-69CA-4B17-AB71-CA2DDEB02662}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64386C02-1F42-4612-92DA-23F385872FB1}

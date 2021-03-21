@@ -1,10 +1,12 @@
-using BlazorWasmClean.Server.Data;
-using BlazorWasmClean.Server.Models;
-using BlazorWasmClean.Shared.State;
-using Microsoft.AspNetCore.Authentication;
+using BlazorWasmClean.Application;
+using BlazorWasmClean.Application.Common.Interfaces;
+using BlazorWasmClean.Infrastructure;
+using BlazorWasmClean.Infrastructure.Persistence;
+using BlazorWasmClean.Server.Filters;
+using BlazorWasmClean.Server.Services;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,25 +26,21 @@ namespace BlazorWasmClean.Server
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(
-					Configuration.GetConnectionString("DefaultConnection")));
+			services.AddApplication();
+			services.AddInfrastructure(Configuration);
 
 			services.AddDatabaseDeveloperPageExceptionFilter();
-
-			services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
-
-			services.AddIdentityServer()
-				.AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-			services.AddAuthentication()
-				.AddIdentityServerJwt();
-
-			services.AddControllersWithViews();
+			services.AddSingleton<ICurrentUserService, CurrentUserService>();
+			services.AddHttpContextAccessor();
+			services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
+			services
+				.AddControllersWithViews(options => options.Filters.Add<ApiExceptionFilterAttribute>())
+				.AddFluentValidation();
 			services.AddRazorPages();
+			services.AddSwaggerGen();
 
-			services.AddScoped<StateContainer>();
+			// State Management
+			services.AddScoped<Client.StateContainer>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,10 +58,16 @@ namespace BlazorWasmClean.Server
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
-
+			app.UseHealthChecks("/health");
 			app.UseHttpsRedirection();
 			app.UseBlazorFrameworkFiles();
 			app.UseStaticFiles();
+
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlazorWasmClean API V1");
+			});
 
 			app.UseRouting();
 

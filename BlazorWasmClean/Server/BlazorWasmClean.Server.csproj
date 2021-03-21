@@ -6,12 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Application\BlazorWasmClean.Application.csproj" />
     <ProjectReference Include="..\Client\BlazorWasmClean.Client.csproj" />
-    <ProjectReference Include="..\Shared\BlazorWasmClean.Shared.csproj" />
+    <ProjectReference Include="..\Infrastructure\BlazorWasmClean.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
