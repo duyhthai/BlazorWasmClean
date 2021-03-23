@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BlazorStrap;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,8 @@ namespace BlazorWasmClean.Client
 				.CreateClient("BlazorWasmClean.ServerAPI"));
 
 			builder.Services.AddApiAuthorization();
+
+			builder.Services.AddBootstrapCss();
 
 			builder.Services.AddSingleton<StateContainer>();
 
